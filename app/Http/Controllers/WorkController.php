@@ -19,10 +19,11 @@ class WorkController extends Controller
     public function create()
     {
         $works = Employee::all();
+
         return view('manager.works.create', ['employees' => $works]);
     }
 
-    public function store(StoreWorkRequest $request)
+    /*public function store(StoreWorkRequest $request)
     {
 
         $data = array_merge($request->validated(), ['user_id' => auth()->user()->id]);
@@ -35,11 +36,12 @@ class WorkController extends Controller
         // Use the service
         $result = $sms->send([
             'to' => $work->employee->phone_number,
-            'message' => 'Turabasuhuje '. $work->employee->names.'!'.' Uno munsi tariki '. $work->created_at .' Mwakoreye amafaranga '. $work->formatedPayout() .'Tubashimiye ubwitange mugaragaza mukazi.'.'Ubuyobozi bwa ZAGNUT CLUB.',
+            'message' => 'Turabasuhuje '.$work->employee->names.'!'.' Uno munsi tariki '.$work->created_at.' Mwakoreye amafaranga '.$work->formatedPayout().'Tubashimiye ubwitange mugaragaza mukazi.'.'Ubuyobozi bwa ZAGNUT CLUB.',
         ]);
+
         return to_route('works.index');
     }
-
+*/
     public function edit(Work $work)
     {
 

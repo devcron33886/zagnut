@@ -6,62 +6,38 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreWorkRequest extends FormRequest
 {
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }
 
-    public function rules(): array
+    public function rules()
     {
         return [
-            'employee_id' => [
-                'integer',
-                'exists:employees,id',
-                'required',
-            ],
-            'bar_amount' => [
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-                'required',
-            ],
-            'kitchen_amount' => [
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-                'required',
-            ],
-            'loss' => [
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-                'nullable',
-            ],
-            'paid_loss' => [
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-                'nullable',
-            ],
-            'bonus' => [
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-                'nullable',
-            ],
-            'percentage' => [
-                'required',
-                'numeric',
-                'between:0,100',
-            ],
-            'status' => [
-                'required',
-            ],
-            'user_id' => [
-                'integer',
-                'exists:users,id',
-            ],
+            'employee_id' => 'required|exists:employees,id',
+            'bar_amount' => 'required|integer',
+            'kitchen_amount' => 'required|integer',
+            'chamber_amount' => 'required|integer',
+            'bingalo_amount' => 'required|integer',
+            'cash_in' => 'integer',
+            'cash_out' => 'integer',
+            'user_id' => 'required|exists:users,id',
         ];
+    }
 
+    public function messages()
+    {
+        return [
+            'employee_id.required' => 'Employee required.',
+            'employee_id.exists' => 'selected employee invalid.',
+            'bar_amount.required' => 'Bar amount required.',
+            'kitchen_amount.required' => 'Kitchen amount required.',
+            'chamber_amount.required' => 'Chamber amount required.',
+            'bingalo_amount.required' => 'Bingalo amount required.',
+            'cash_in.integer' => 'Cash in must be an integer.',
+            'cash_out.integer' => 'Cash out must be an integer.',
+            'user_id.required' => 'User required.',
+            'user_id.exists' => 'selected user invalid.',
+        ];
     }
 }

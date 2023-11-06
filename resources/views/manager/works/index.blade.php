@@ -22,39 +22,41 @@
   								<table id="myTable" class="min-w-full divide-y divide-gray-300">
   									<thead class="bg-gray-50">
 										<tr>
-											<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Code</th>
+											<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Names</th>
+											<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Phone</th>
 											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Bar Amount</th>
 											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Kitchen Amount</th>
-											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Loss</th>
-											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Paid Loss</th>
-											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Remaining Loss</th>
-											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Bonus</th>
+											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Chamber</th>
+											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Bingalo</th>
 											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Total Amount</th>
-											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Payout</th>
 											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Percentage</th>
-											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Status</th>
+											<th scope="col" class="px-3 py-3.5 bg-red-400 text-left text-sm font-semibold text-gray-900">Cash in</th>
+											<th scope="col" class="px-3 py-3.5  text-left text-sm font-semibold text-gray-900">Cash out</th>
+											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Daily Payout</th>
+											
+											
+											<th scope="col" class="px-3 py-3.5 bg-green-400 text-left text-sm font-semibold text-gray-900">Salary</th>
+											
 										</tr>
 									</thead>
 									<tbody class="divide-y divide-gray-200 bg-white">
 										@foreach($works as $work)
 										<tr>
-											<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ $work->employee->code}}</td>
+											<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ $work->employee->names}}</td>
+											<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ $work->employee->phone_number}}</td>
 											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">{{ $work->formattedBar() }}</td>
 											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">{{ $work->formattedKitchen() }}</td>
 											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">{{ $work->formattedLoss() }}</td>
+
 											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">{{ $work->formattedPaidLoss() }}</td>
-											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">{{ $work->formattedRemainingLoss() }}</td>
-											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">{{ $work->formattedBonus() }}</td>
 											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">{{ $work->formattedTotal() }}</td>
 											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">{{ $work->formatedPayout() }}</td>
-											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">{{ $work->percentage }}</td>
-											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">
-												@if($work->status==1)
-													<span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Closed</span>
-												@elseif($work->status==0)
-													<span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">Open</span>
-												@endif
-											</td>
+											<td class="whitespace-nowrap bg-red-400 px-3 py-4 text-sm text-gray-900">{{ $work->formattedRemainingLoss() }}</td>
+											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">{{ $work->formattedBonus() }}</td>
+											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">{{ $work->formatedPayout() }}</td>
+											<td class="whitespace-nowrap px-3 bg-green-400 py-4 text-sm text-gray-900">{{ $work->formatedPayout() }}</td>
+											
+											
 			  							</tr>
 			  						@endforeach
 			  					</tbody>

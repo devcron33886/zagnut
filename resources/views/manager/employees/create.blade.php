@@ -19,12 +19,12 @@
 	            			@csrf
 	            			<div>
 	            				<x-input-label for="names" :value="__('Names')" />
-	            				<x-text-input id="names" class="block mt-1 w-full" type="text" name="names" :value="old('names')" required autofocus autocomplete="name" />
+	            				<x-text-input id="names" class="block mt-4 w-full" type="text" name="names" :value="old('names')" required autofocus autocomplete="name" />
 	            				<x-input-error :messages="$errors->get('names')" class="mt-2" />
 	        				</div>
 		        			<div class="mt-4">
 		            			<x-input-label for="phone_number" :value="__('Phone Number')" />
-		            			<x-text-input id="phone_number" class="block mt-1 w-full" type="tel" name="phone_number" :value="old('phone_number')" />
+		            			<x-text-input id="phone_number" class="block mt-4 w-full" type="tel" name="phone_number" :value="old('phone_number')" />
 		            			<x-input-error :messages="$errors->get('phone_number')" class="mt-2" />
 		        			</div>
 		        			<div class="mt-4">

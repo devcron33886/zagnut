@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WorkController;
@@ -9,13 +10,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', DashboardController::class)->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('manager/employees', EmployeeController::class);
-    Route::resource('manager/works', WorkController::class);
+    Route::resource('manager/works', WorkController::class)->except(['store']);
 });
 
 Route::middleware('auth')->group(function () {

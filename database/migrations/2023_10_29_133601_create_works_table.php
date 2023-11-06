@@ -16,12 +16,11 @@ return new class extends Migration
             $table->foreignId('employee_id')->references('id')->on('employees');
             $table->integer('bar_amount');
             $table->integer('kitchen_amount');
-            $table->integer('loss')->default(0);
-            $table->integer('paid_loss')->default(0);
-            $table->integer('remaining_loss')->default(0);
-            $table->integer('bonus')->default(0);
-            $table->boolean('status')->default(1);
-            $table->integer('percentage');
+            $table->integer('chamber_amount');
+            $table->integer('bingalo_amount');
+            $table->integer('cash_in')->default(0);
+            $table->integer('cash_out')->default(0);
+            $table->integer('payout');
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
             $table->softDeletes();

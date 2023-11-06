@@ -15,9 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('code');
             $table->string('names');
-            $table->string('phone_number');
-            $table->string('national_id');
-            $table->string('sex');
+            $table->string('phone_number')->unique();
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
             $table->softDeletes();

@@ -38,40 +38,43 @@ class Work extends Model
         return Money::RWF($this->kitchen_amount);
     }
 
-    public function formattedLoss(): Money
+    public function formattedBingalo(): Money
     {
-        return Money::RWF($this->loss);
+        return Money::RWF($this->bingalo_amount);
     }
 
-    public function formattedPaidLoss(): Money
+    public function formattedChamber(): Money
     {
-        return Money::RWF($this->paid_loss);
+        return Money::RWF($this->chamber_amount);
     }
 
-    public function formattedBonus(): Money
+    public function formattedCashIn(): Money
     {
-        return Money::RWF($this->bonus);
+        return Money::RWF($this->cash_in);
     }
 
-    public function formattedRemainingLoss(): Money
+    public function formattedCashOut(): Money
     {
-        $remaining_loss = $this->loss - $this->paid_loss;
-
-        return Money::RWF($remaining_loss);
+        return Money::RWF($this->cash_out);
+    }
+    public function formattedPayOut(): Money
+    {
+        return Money::RWF($this->payout);
     }
 
     public function formattedTotal(): Money
     {
-        $remaining_loss = $this->loss - $this->paid_loss;
-
-        return Money::RWF($this->bar_amount + $this->kitchen_amount + $this->bonus + $remaining_loss);
+        return Money::RWF($this->bar_amount + $this->kitchen_amount + $this->bingalo_amount+$this->chamber_amount);
     }
 
-    public function formatedPayout(): Money
+    public function formatedSalary(): Money
     {
-        $daily_total = $this->bar_amount + $this->kitchen_amount + $this->bonus + $this->loss - $this->paid_loss;
-        $grand_total = ($daily_total * $this->percentage) / 100;
-
-        return Money::RWF($grand_total + $this->loss - $this->paid_loss);
+        return Money::RWF($this->payout);
     }
+    public function formatedPercentage(): Money
+    {
+        $total_amount=$this->bar_amount + $this->kitchen_amount + $this->bingalo_amount+$this->chamber_amount;
+        return Money::RWF($total_amount/30);
+    }
+
 }
